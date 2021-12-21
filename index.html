@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+    <script src="./js/rotation.js"></script>
+    <script src = "./js/ring.js"></script>
+    <script src = "js/birds.js"></script>
+    <script src = "js/game.js"></script>
+    <script src = "https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src = "https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+
+  </head>
+
+  <body>
+    <a-scene background="color:#026F90">
+
+      <a-entity id="look" look-controls camera position="0 2 20">
+
+      
+
+      </a-entity>
+
+      <!--Asset Management-->
+      <a-assets timeout="10000">        
+      <a-asset-item id="terrainPic" src="./assets/models/terrain/scene.gltf"></a-asset-item >
+        <a-asset-item id="planePic" src="./assets/models/airplane/scene.gltf"></a-asset-item > 
+        
+      </a-assets>
+
+      <!-- Terrain  -->
+     
+
+  <a-entity id = "terrain" gltf-model="#terrainPic" position = " 0 0 0" animation = "property:position; to: 0 0 1000;loop:true; dur:150000;easing:linear" terrain-rotation new-rings new-birds></a-entity>
+      <a-entity id = "plane" gltf-model = "#planePic" position = "0 0 15" rotation = "0 90 0" scale = "1 1 1" plane-rotation dynamic-body="mass:0" game-play></a-entity>
+    
+        <!-- Text -->
+    <a-entity id="header" position = "1 -4 0">
+        <a-entity text = "value:VIRTUAL FLIGHT ; width:40; color: red "  position= "5 20 0"   ></a-entity>
+    </a-entity>
+  
+     <!-- Timer -->
+     <a-entity  position = "1 -5 0">
+      <a-entity text = "value: TIME\nREMAINING ; width:40; color: red "  position= "-5 17 0"   ></a-entity>
+  </a-entity>
+
+  <a-entity  position = "1 -5 0">
+    <a-entity id= "timer" text = "value: 00:00 ; width:40; color: red "  position= "6 17 0"   ></a-entity>
+  </a-entity>
+
+  <a-entity  position = "1 -5 0">
+    <a-entity  text = "value: Targets\nREMAINING ; width:40; color: red "  position= "-6 12 0"   ></a-entity>
+  </a-entity>
+
+  <a-entity  position = "1 -5 0">
+    <a-entity id= "targets" text = "value: 1 ; width:40; color: red "  position= "6 12 0"   ></a-entity>
+  </a-entity>
+
+  <a-entity  position = "1 -5 0">
+    <a-entity  text = "value: Score ; width:40; color: red "  position= "34 19 0"   ></a-entity>
+  </a-entity>
+  
+  <a-entity  position = "1 -5 0">
+    <a-entity id= "score" text = "value: 0 ; width:40; color: red "  position= "42 19 0"   ></a-entity>
+  </a-entity>
+
+  <a-entity  position = "0 0 0">
+    <a-entity id= "gameOver" text = "value: GAME OVER ; width:40; color: white "  position= "0 7 0" visible="false"  ></a-entity>
+  </a-entity>
+
+    </a-scene>
+  </body>
+</html>
